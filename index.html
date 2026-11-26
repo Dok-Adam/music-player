@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ru">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body {
+    font-family: system-ui, sans-serif;
+    background-color: #fff4e6;
+    color: #263a66;
+    max-width: 480px;
+    margin: 40px auto;
+    padding: 0 16px;
+  }
+
+  audio {
+    width: 100%;
+  }
+</style>
+<head>
+  <meta charset="utf-8">
+  <title>Мой плеер</title>
+</head>
+<body>
+  <h1>Музыка для работы</h1>
+  <p>Первый трек</p>
+  <audio controls src="track.mp3"></audio>
+<p>Второй трек</p>
+<audio controls src="track-2.mp3"></audio>
+<p>Третий трек</p>
+<audio controls src="track-3.mp3"></audio>
+<script>
+  const players = document.querySelectorAll('audio');
+
+  players.forEach((currentPlayer) => {
+    currentPlayer.addEventListener('play', () => {
+      players.forEach((otherPlayer) => {
+        if (otherPlayer !== currentPlayer) {
+          otherPlayer.pause();
+        }
+      });
+    });
+  });
+</script>
+</body>
+</html>
